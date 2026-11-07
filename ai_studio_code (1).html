@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Assetto Corsa Chile</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Rajdhani & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            racing: {
+              red: '#e10600',
+              redHover: '#b80500',
+              carbon: '#0c0d0e',
+              panel: '#15171a',
+              card: '#1b1e22',
+              border: '#2a2e35'
+            },
+            prime: {
+              gold: '#f59e0b',
+              glow: '#fbbf24',
+              dark: '#78350f'
+            }
+          },
+          fontFamily: {
+            racing: ['"Rajdhani"', 'sans-serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0b0c0e;
+      background-image: radial-gradient(rgba(225, 6, 0, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .carbon-gradient {
+      background: linear-gradient(145deg, #181b1f 0%, #111315 100%);
+    }
+    .prime-border-glow {
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+    }
+    .logo-glow {
+      filter: drop-shadow(0 0 12px rgba(225, 6, 0, 0.35));
+    }
+  </style>
+</head>
+<body class="text-gray-200 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-racing-red selection:text-white">
+
+  <!-- ================= ENCABEZADO CON LOGO OFICIAL ================= -->
+  <header class="border-b border-racing-border bg-racing-carbon/95 backdrop-blur-md sticky top-0 z-40 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Contenedor del Logo de Assetto Corsa Chile -->
+      <div class="flex items-center gap-4 cursor-pointer group" onclick="switchTab('tab-envia')" title="Volver al inicio - Envía tu Challenge">
+        <img id="main-header-logo" 
+             src="input_file_0.png"
+             onerror="this.src='data:image/png;base64,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'"
+             alt="Assetto Corsa Chile" 
+             class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 logo-glow">
+        
+        <div class="border-l border-racing-border/80 pl-3.5 hidden sm:block">
+          <span class="text-[11px] bg-racing-red/20 text-racing-red font-bold px-2.5 py-0.5 rounded border border-racing-red/30 tracking-widest uppercase font-racing">
+            Comunidad Oficial
+          </span>
+          <p class="text-[11px] text-gray-400 font-medium mt-0.5">Desafíos, Combos y Votaciones Simracing</p>
+        </div>
+      </div>
+
+      <!-- Navegación de pestañas -->
+      <nav class="flex flex-wrap items-center justify-center gap-1.5 bg-racing-panel p-1.5 rounded-xl border border-racing-border shadow-inner">
+        <button id="btn-envia" onclick="switchTab('tab-envia')" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-2 bg-racing-red text-white shadow-md">
+          <i class="fa-solid fa-plus-circle"></i> Envía tu Challenge
+        </button>
+        <button id="btn-votacion" onclick="switchTab('tab-votacion')" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-2 text-gray-400 hover:text-white hover:bg-racing-card">
+          <i class="fa-solid fa-fire"></i> Votación
+        </button>
+        <button id="btn-prime" onclick="switchTab('tab-prime')" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-2 text-yellow-500 hover:text-yellow-400 hover:bg-racing-card">
+          <i class="fa-solid fa-crown text-prime-gold"></i> Assetto PRIME
+        </button>
+        <button id="btn-admin" onclick="switchTab('tab-admin')" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center gap-2 text-gray-400 hover:text-white hover:bg-racing-card">
+          <i class="fa-solid fa-shield-halved"></i> Admin
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= CONTENEDOR PRINCIPAL ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+
+    <!-- 1. PESTAÑA: ENVÍA TU CHALLENGE (NORMAL) -->
+    <section id="tab-envia" class="tab-content max-w-2xl mx-auto">
+      <div class="carbon-gradient border border-racing-border rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-40 h-40 bg-racing-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="mb-6">
+          <div class="flex items-center gap-2 text-racing-red text-xs uppercase tracking-widest font-black">
+            <i class="fa-solid fa-gauge-high"></i> Envío Público
+          </div>
+          <h2 class="text-2xl font-black uppercase text-white font-racing tracking-wide mt-1">Propón tu Challenge</h2>
+          <p class="text-sm text-gray-400 mt-1">Envía tu combinación. Disponible 1 envío cada 72 horas por piloto.</p>
+        </div>
+
+        <form id="form-normal" onsubmit="handleChallengeSubmit(event, false)" class="space-y-5">
+          <!-- Modelo del vehículo -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+              <i class="fa-solid fa-car text-racing-red mr-1.5"></i> Modelo del Vehículo *
+            </label>
+            <input type="text" id="normal-vehicle" required placeholder="Ej. Porsche 911 GT3 R, BMW M3 E30, Ferrari 488..."
+                   class="w-full bg-racing-panel border border-racing-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing-red focus:ring-1 focus:ring-racing-red transition-all">
+          </div>
+
+          <!-- Circuito -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+              <i class="fa-solid fa-road text-racing-red mr-1.5"></i> Circuito / Trazado *
+            </label>
+            <input type="text" id="normal-track" required placeholder="Ej. Nürburgring Nordschleife, Spa-Francorchamps, Monza..."
+                   class="w-full bg-racing-panel border border-racing-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing-red focus:ring-1 focus:ring-racing-red transition-all">
+          </div>
+
+          <!-- Categoría -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+              <i class="fa-solid fa-trophy text-racing-red mr-1.5"></i> Categoría de Automovilismo *
+            </label>
+            <select id="normal-category" required class="w-full bg-racing-panel border border-racing-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-racing-red focus:ring-1 focus:ring-racing-red transition-all text-gray-200">
+              <option value="" disabled selected>Selecciona una categoría...</option>
+              <option value="GT3">GT3</option>
+              <option value="GT2">GT2</option>
+              <option value="Fórmula 1">Fórmula 1</option>
+              <option value="Monoplaza">Monoplaza (F2, F3, etc.)</option>
+              <option value="DTM / Touring">DTM / Touring</option>
+              <option value="Street / Callejeros">Street / Callejeros</option>
+              <option value="Drift">Drift</option>
+              <option value="Rally / Hillclimb">Rally / Hillclimb</option>
+              <option value="Prototipos / WEC">Prototipos / Hypercar / WEC</option>
+            </select>
+          </div>
+
+          <!-- Foto de referencia opcional -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">
+              <i class="fa-solid fa-camera text-racing-red mr-1.5"></i> Foto de Referencia (Opcional)
+            </label>
+            <div class="flex items-center gap-3">
+              <label class="cursor-pointer bg-racing-panel hover:bg-racing-card border border-racing-border px-4 py-2.5 rounded-xl text-xs font-semibold text-gray-300 transition-all flex items-center gap-2 border-dashed hover:border-racing-red">
+                <i class="fa-solid fa-upload"></i> Subir foto del vehículo
+                <input type="file" id="normal-image-file" accept="image/*" class="hidden" onchange="previewSelectedImage(this, 'normal-img-preview')">
+              </label>
+              <span id="normal-img-preview" class="text-xs text-gray-400 truncate max-w-xs">Sin archivo (Se buscará foto real en Google Imágenes)</span>
+            </div>
+          </div>
+
+          <!-- Botón de Envío -->
+          <button id="normal-submit-btn" type="submit" class="w-full bg-racing-red hover:bg-racing-redHover text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-red-950/60 flex items-center justify-center gap-2 uppercase tracking-wider text-sm mt-4">
+            <span class="btn-text flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Enviar Combinación</span>
+            <span class="btn-spinner hidden items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> Extrayendo foto real en Google...</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 2. PESTAÑA: VOTACIÓN -->
+    <section id="tab-votacion" class="tab-content hidden">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-racing-border gap-4">
+        <div>
+          <span class="text-xs font-bold text-racing-red uppercase tracking-widest"><i class="fa-solid fa-ranking-star"></i> Tabla de Elección</span>
+          <h2 class="text-3xl font-black uppercase tracking-wide font-racing text-white">Votación de Challenges</h2>
+          <p class="text-sm text-gray-400 mt-1">Apoya tus combinaciones favoritas para los eventos oficiales de la comunidad.</p>
+        </div>
+        <div class="flex items-center gap-3 text-xs text-gray-400 bg-racing-panel px-4 py-2 rounded-xl border border-racing-border">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-prime-gold"></span> Prioridad PRIME</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-racing-red"></span> Orden por Votos</span>
+        </div>
+      </div>
+
+      <!-- Grid de Propuestas -->
+      <div id="voting-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- 3. PESTAÑA: ASSETTO PRIME CHILE -->
+    <section id="tab-prime" class="tab-content hidden max-w-2xl mx-auto">
+      
+      <!-- Pantalla de bloqueo PRIME -->
+      <div id="prime-lock-screen" class="carbon-gradient border border-prime-gold/40 rounded-2xl p-8 text-center prime-border-glow shadow-2xl">
+        <div class="w-16 h-16 rounded-full bg-prime-gold/10 border border-prime-gold flex items-center justify-center mx-auto mb-4 text-prime-gold text-2xl">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <h2 class="text-2xl font-black uppercase text-white font-racing">Assetto PRIME Chile</h2>
+        <p class="text-sm text-gray-400 mt-2 max-w-md mx-auto">Exclusivo para miembros PRIME. Acceso con frecuencia reducida (1 envío cada 24 horas) y máxima prioridad en votaciones.</p>
+
+        <form onsubmit="handlePrimeAuth(event)" class="mt-6 max-w-sm mx-auto space-y-4">
+          <div>
+            <input type="password" id="prime-password-input" placeholder="Ingresa contraseña PRIME..." required
+                   class="w-full bg-racing-panel border border-prime-gold/50 rounded-xl px-4 py-3 text-center text-sm focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold transition-all">
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-black font-extrabold py-3 px-4 rounded-xl transition-all shadow-lg shadow-amber-950/40 uppercase tracking-wider text-xs">
+            Desbloquear Acceso PRIME
+          </button>
+        </form>
+      </div>
+
+      <!-- Formulario PRIME (Desbloqueado) -->
+      <div id="prime-unlocked-panel" class="hidden carbon-gradient border-2 border-prime-gold rounded-2xl p-6 sm:p-8 prime-border-glow shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-prime-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-racing-border">
+          <div>
+            <div class="flex items-center gap-2 text-prime-gold text-xs uppercase tracking-widest font-black">
+              <i class="fa-solid fa-crown"></i> Miembro Activo
+            </div>
+            <h2 class="text-2xl font-black uppercase text-white font-racing tracking-wide mt-1">Challenge PRIME</h2>
+            <p class="text-sm text-gray-400">1 envío cada 24 horas. Tus combinaciones van primero en la votación.</p>
+          </div>
+          <button onclick="logoutPrime()" title="Cerrar sesión PRIME" class="text-xs text-gray-500 hover:text-red-400 p-2">
+            <i class="fa-solid fa-right-from-bracket text-lg"></i>
+          </button>
+        </div>
+
+        <form id="form-prime" onsubmit="handleChallengeSubmit(event, true)" class="space-y-5">
+          <!-- Modelo -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-prime-gold mb-2">
+              <i class="fa-solid fa-car mr-1.5"></i> Modelo del Vehículo *
+            </label>
+            <input type="text" id="prime-vehicle" required placeholder="Ej. Ferrari 296 GT3, McLaren 720S..."
+                   class="w-full bg-racing-panel border border-prime-gold/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold transition-all">
+          </div>
+
+          <!-- Circuito -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-prime-gold mb-2">
+              <i class="fa-solid fa-road mr-1.5"></i> Circuito / Trazado *
+            </label>
+            <input type="text" id="prime-track" required placeholder="Ej. Suzuka Circuit, Silverstone..."
+                   class="w-full bg-racing-panel border border-prime-gold/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold transition-all">
+          </div>
+
+          <!-- Categoría -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-prime-gold mb-2">
+              <i class="fa-solid fa-trophy mr-1.5"></i> Categoría de Automovilismo *
+            </label>
+            <select id="prime-category" required class="w-full bg-racing-panel border border-prime-gold/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold transition-all text-gray-200">
+              <option value="" disabled selected>Selecciona una categoría...</option>
+              <option value="GT3">GT3</option>
+              <option value="GT2">GT2</option>
+              <option value="Fórmula 1">Fórmula 1</option>
+              <option value="Monoplaza">Monoplaza (F2, F3, etc.)</option>
+              <option value="DTM / Touring">DTM / Touring</option>
+              <option value="Street / Callejeros">Street / Callejeros</option>
+              <option value="Drift">Drift</option>
+              <option value="Rally / Hillclimb">Rally / Hillclimb</option>
+              <option value="Prototipos / WEC">Prototipos / Hypercar / WEC</option>
+            </select>
+          </div>
+
+          <!-- Foto -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-prime-gold mb-2">
+              <i class="fa-solid fa-camera mr-1.5"></i> Foto de Referencia (Opcional)
+            </label>
+            <div class="flex items-center gap-3">
+              <label class="cursor-pointer bg-racing-panel hover:bg-racing-card border border-prime-gold/40 px-4 py-2.5 rounded-xl text-xs font-semibold text-gray-300 transition-all flex items-center gap-2 border-dashed hover:border-prime-gold">
+                <i class="fa-solid fa-upload"></i> Subir foto del vehículo
+                <input type="file" id="prime-image-file" accept="image/*" class="hidden" onchange="previewSelectedImage(this, 'prime-img-preview')">
+              </label>
+              <span id="prime-img-preview" class="text-xs text-gray-400 truncate max-w-xs">Sin archivo (Se buscará foto real en Google Imágenes)</span>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button id="prime-submit-btn" type="submit" class="w-full bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 text-black font-extrabold py-3.5 px-6 rounded-xl transition-all duration-200 shadow-xl shadow-yellow-950/40 flex items-center justify-center gap-2 uppercase tracking-wider text-sm mt-4 hover:brightness-110">
+            <span class="btn-text flex items-center gap-2"><i class="fa-solid fa-bolt"></i> Enviar como PRIME</span>
+            <span class="btn-spinner hidden items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> Extrayendo foto real en Google...</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 4. PESTAÑA: ADMINISTRACIÓN -->
+    <section id="tab-admin" class="tab-content hidden">
+      
+      <!-- Bloqueo Admin -->
+      <div id="admin-lock-screen" class="max-w-md mx-auto carbon-gradient border border-racing-border rounded-2xl p-8 text-center shadow-2xl">
+        <div class="w-16 h-16 rounded-full bg-racing-red/10 border border-racing-red flex items-center justify-center mx-auto mb-4 text-racing-red text-2xl">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2 class="text-2xl font-black uppercase text-white font-racing">Panel Administrativo</h2>
+        <p class="text-sm text-gray-400 mt-2">Acceso restringido para organizadores de Assetto Corsa Chile.</p>
+
+        <form onsubmit="handleAdminAuth(event)" class="mt-6 space-y-4">
+          <div>
+            <input type="password" id="admin-password-input" placeholder="Ingresa contraseña de administración..." required
+                   class="w-full bg-racing-panel border border-racing-border rounded-xl px-4 py-3 text-center text-sm focus:outline-none focus:border-racing-red focus:ring-1 focus:ring-racing-red transition-all">
+          </div>
+          <button type="submit" class="w-full bg-racing-red hover:bg-racing-redHover text-white font-bold py-3 px-4 rounded-xl transition-all shadow-lg uppercase tracking-wider text-xs">
+            Entrar al Panel
+          </button>
+        </form>
+      </div>
+
+      <!-- Dashboard Admin (Desbloqueado) -->
+      <div id="admin-dashboard" class="hidden space-y-8">
+        <div class="flex items-center justify-between pb-4 border-b border-racing-border">
+          <div>
+            <h2 class="text-3xl font-black uppercase tracking-wide font-racing text-white">Dashboard de Control</h2>
+            <p class="text-sm text-gray-400">Modera propuestas, gestiona fotos y revisa sugerencias.</p>
+          </div>
+          <button onclick="logoutAdmin()" class="bg-racing-panel hover:bg-racing-card text-gray-300 border border-racing-border px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Salir de Admin
+          </button>
+        </div>
+
+        <!-- Tabla de Propuestas -->
+        <div class="carbon-gradient border border-racing-border rounded-2xl overflow-hidden shadow-2xl">
+          <div class="p-5 bg-racing-panel/50 border-b border-racing-border flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white uppercase font-racing flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-racing-red"></i> Propuestas Registradas (<span id="admin-count-proposals">0</span>)
+            </h3>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-gray-300">
+              <thead class="bg-racing-panel text-xs uppercase tracking-wider text-gray-400 border-b border-racing-border">
+                <tr>
+                  <th class="py-3 px-4">Tipo</th>
+                  <th class="py-3 px-4">Vehículo</th>
+                  <th class="py-3 px-4">Pista</th>
+                  <th class="py-3 px-4">Categoría</th>
+                  <th class="py-3 px-4 text-center">Votos</th>
+                  <th class="py-3 px-4 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="admin-proposals-tbody" class="divide-y divide-racing-border/40">
+                <!-- Inserción Dinámica -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Panel de Sugerencias -->
+        <div class="carbon-gradient border border-racing-border rounded-2xl overflow-hidden shadow-2xl">
+          <div class="p-5 bg-racing-panel/50 border-b border-racing-border flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white uppercase font-racing flex items-center gap-2">
+              <i class="fa-solid fa-envelope-open-text text-racing-red"></i> Buzón de Sugerencias de Pilotos (<span id="admin-count-suggestions">0</span>)
+            </h3>
+          </div>
+
+          <div id="admin-suggestions-container" class="p-5 divide-y divide-racing-border/40">
+            <!-- Inserción Dinámica -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER GLOBAL ================= -->
+  <footer class="bg-racing-carbon border-t border-racing-border py-8 mt-12 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <!-- Info Marca con Logo -->
+        <div class="flex items-center gap-3 text-center md:text-left">
+          <img src="input_file_0.png" 
+               onerror="this.src='data:image/png;base64,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'"
+               alt="Assetto Corsa Chile" 
+               class="h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-opacity">
+          <div>
+            <p class="font-bold text-white font-racing uppercase tracking-wider text-sm">Assetto Corsa Chile</p>
+            <p class="text-xs text-gray-500">Pasión por el simracing latinoamericano • Servidores 24/7</p>
+          </div>
+        </div>
+
+        <!-- Botones y Enlaces Requeridos -->
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="https://www.instagram.com/assettocorsachile?dlrf=MTNkcGdmZzVjdWVseg==" target="_blank" rel="noopener noreferrer"
+             class="bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-90 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-md">
+            <i class="fa-brands fa-instagram text-base"></i> Instagram
+          </a>
+
+          <a href="https://discord.gg/Srtx4UHX3D" target="_blank" rel="noopener noreferrer"
+             class="bg-[#5865F2] hover:bg-[#4752c4] text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-md">
+            <i class="fa-brands fa-discord text-base"></i> Discord
+          </a>
+
+          <a href="http://acchile.ddns.net:8772/?server=0" target="_blank" rel="noopener noreferrer"
+             class="bg-racing-panel hover:bg-racing-card border border-racing-red/60 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-md">
+            <i class="fa-solid fa-server text-racing-red"></i> Nuestros Servidores
+          </a>
+
+          <button onclick="openSuggestionModal()"
+                  class="bg-racing-card hover:bg-racing-border border border-gray-600 text-yellow-400 px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-md">
+            <i class="fa-regular fa-lightbulb"></i> Sugerencias
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-racing-border/40 text-center text-xs text-gray-600">
+        &copy; <span id="current-year"></span> Assetto Corsa Chile. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALES ================= -->
+
+  <!-- Modal Sugerencias -->
+  <div id="modal-suggestion" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="carbon-gradient border border-racing-border w-full max-w-lg rounded-2xl p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-racing-border">
+        <h3 class="text-xl font-bold font-racing uppercase text-white flex items-center gap-2">
+          <i class="fa-regular fa-lightbulb text-yellow-400"></i> Sugerencia para la Plataforma
+        </h3>
+        <button onclick="closeSuggestionModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <form onsubmit="handleSuggestionSubmit(event)" class="mt-4 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-400 mb-1">¿Qué deberíamos añadir o mejorar en la comunidad?</label>
+          <textarea id="suggestion-text" rows="4" required placeholder="Escribe aquí tu opinión, reporte o idea..."
+                    class="w-full bg-racing-panel border border-racing-border rounded-xl p-3 text-sm focus:outline-none focus:border-racing-red focus:ring-1 focus:ring-racing-red"></textarea>
+        </div>
+        <div class="flex justify-end gap-3 pt-2">
+          <button type="button" onclick="closeSuggestionModal()" class="px-4 py-2 bg-racing-panel hover:bg-racing-card border border-racing-border rounded-xl text-xs font-bold text-gray-300">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 bg-racing-red hover:bg-racing-redHover text-white rounded-xl text-xs font-bold uppercase tracking-wider">
+            Enviar Sugerencia
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Confirmar Eliminación (Texto estricto: "¿Estás seguro de eliminar?") -->
+  <div id="modal-delete" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="carbon-gradient border border-racing-border w-full max-w-md rounded-2xl p-6 shadow-2xl text-center">
+      <div class="w-14 h-14 bg-red-950/60 text-racing-red border border-racing-red/50 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2 font-racing uppercase tracking-wide">¿Estás seguro de eliminar?</h3>
+      <p class="text-xs text-gray-400 mb-6">Esta acción borrará la propuesta y sus votos de manera permanente.</p>
+      
+      <div class="flex justify-center gap-4">
+        <button onclick="closeDeleteModal()" class="px-5 py-2.5 bg-racing-panel hover:bg-racing-card border border-racing-border rounded-xl text-xs font-bold text-gray-300">
+          Cancelar
+        </button>
+        <button id="btn-confirm-delete" class="px-5 py-2.5 bg-racing-red hover:bg-racing-redHover text-white rounded-xl text-xs font-bold uppercase tracking-wider">
+          Sí, Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar Propuesta (Admin) -->
+  <div id="modal-edit" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden overflow-y-auto">
+    <div class="carbon-gradient border border-racing-border w-full max-w-lg rounded-2xl p-6 shadow-2xl my-8">
+      <div class="flex items-center justify-between pb-4 border-b border-racing-border">
+        <h3 class="text-xl font-bold font-racing uppercase text-white flex items-center gap-2">
+          <i class="fa-solid fa-pen-to-square text-racing-red"></i> Editar Propuesta
+        </h3>
+        <button onclick="closeEditModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <form onsubmit="handleEditSubmit(event)" class="mt-4 space-y-4">
+        <input type="hidden" id="edit-id">
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Modelo de Vehículo</label>
+          <input type="text" id="edit-vehicle" required class="w-full bg-racing-panel border border-racing-border rounded-xl p-3 text-sm focus:border-racing-red">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Circuito</label>
+          <input type="text" id="edit-track" required class="w-full bg-racing-panel border border-racing-border rounded-xl p-3 text-sm focus:border-racing-red">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Categoría</label>
+          <select id="edit-category" required class="w-full bg-racing-panel border border-racing-border rounded-xl p-3 text-sm text-gray-200">
+            <option value="GT3">GT3</option>
+            <option value="GT2">GT2</option>
+            <option value="Fórmula 1">Fórmula 1</option>
+            <option value="Monoplaza">Monoplaza</option>
+            <option value="DTM / Touring">DTM / Touring</option>
+            <option value="Street / Callejeros">Street / Callejeros</option>
+            <option value="Drift">Drift</option>
+            <option value="Rally / Hillclimb">Rally / Hillclimb</option>
+            <option value="Prototipos / WEC">Prototipos / Hypercar / WEC</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Reemplazar Imagen (Archivo local o buscar nueva)</label>
+          <input type="file" id="edit-image-file" accept="image/*" class="w-full text-xs text-gray-400 bg-racing-panel p-2 rounded-xl border border-racing-border">
+          <p class="text-[11px] text-gray-500 mt-1">Si no seleccionas un archivo, se mantendrá la foto actual.</p>
+        </div>
+
+        <div class="flex justify-end gap-3 pt-3">
+          <button type="button" onclick="closeEditModal()" class="px-4 py-2 bg-racing-panel hover:bg-racing-card border border-racing-border rounded-xl text-xs font-bold text-gray-300">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 bg-racing-red hover:bg-racing-redHover text-white rounded-xl text-xs font-bold uppercase tracking-wider">
+            Guardar Cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* =====================================================================
+       CONFIGURACIÓN DE GOOGLE CUSTOM SEARCH API (IMAGE SEARCH)
+       Coloca tus credenciales oficiales de Google Cloud Console aquí.
+       Asegúrate de que tu Custom Search Engine (CX) tenga habilitada la 
+       opción "Búsqueda de imágenes" (Image Search).
+       ===================================================================== */
+    const GOOGLE_API_KEY = "TU_API_KEY";
+    const SEARCH_ENGINE_ID = "TU_CX";
+
+    /* ========== CONSTANTES Y ALMACENAMIENTO ========== */
+    const STORAGE_KEYS = {
+      CHALLENGES: 'acchile_challenges_data',
+      SUGGESTIONS: 'acchile_suggestions_data',
+      LAST_SUBMIT_NORMAL: 'acchile_last_normal_time',
+      LAST_SUBMIT_PRIME: 'acchile_last_prime_time',
+      PRIME_AUTH: 'acchile_prime_session',
+      ADMIN_AUTH: 'acchile_admin_session',
+      USER_VOTES: 'acchile_voted_registry'
+    };
+
+    const COOLDOWN_NORMAL_MS = 72 * 60 * 60 * 1000; // 72 horas
+    const COOLDOWN_PRIME_MS = 24 * 60 * 60 * 1000;  // 24 horas
+
+    // Fotografías reales de motorsport en pista (Respaldo verificado si las API keys no están configuradas)
+    const BACKUP_REAL_MOTORSPORT_PHOTOS = [
+      'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1541348263662-e0c866221dd0?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80'
+    ];
+
+    let pendingDeleteId = null;
+
+    /* ========== INICIALIZACIÓN ========== */
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      seedInitialDataIfEmpty();
+      checkSavedSessions();
+      renderVotingGrid();
+    });
+
+    function seedInitialDataIfEmpty() {
+      if (!localStorage.getItem(STORAGE_KEYS.CHALLENGES)) {
+        const demoChallenges = [
+          {
+            id: 'demo-1',
+            vehicle: 'Porsche 911 GT3 R (992)',
+            track: 'Mount Panorama (Bathurst)',
+            category: 'GT3',
+            image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+            votes: 14,
+            isPrime: true,
+            createdAt: Date.now() - 3600000
+          },
+          {
+            id: 'demo-2',
+            vehicle: 'BMW M3 E30 Gr.A',
+            track: 'Nürburgring Nordschleife',
+            category: 'DTM / Touring',
+            image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
+            votes: 8,
+            isPrime: false,
+            createdAt: Date.now() - 7200000
+          }
+        ];
+        localStorage.setItem(STORAGE_KEYS.CHALLENGES, JSON.stringify(demoChallenges));
+      }
+
+      if (!localStorage.getItem(STORAGE_KEYS.SUGGESTIONS)) {
+        localStorage.setItem(STORAGE_KEYS.SUGGESTIONS, JSON.stringify([
+          { id: 'sug-1', text: 'Sería genial organizar una carrera de resistencia de 2.4 horas en Spa-Francorchamps.', date: new Date().toLocaleDateString() }
+        ]));
+      }
+    }
+
+    /* ========== LÓGICA DE FOTOGRAFÍA (GOOGLE IMAGES API + NO DUPLICADOS + NO IA) ========== */
+    async function fetchRealCarImageFromGoogle(vehicleModel) {
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const usedImages = new Set(challenges.map(c => c.image).filter(Boolean));
+
+      if (!GOOGLE_API_KEY || GOOGLE_API_KEY === "TU_API_KEY" || !SEARCH_ENGINE_ID || SEARCH_ENGINE_ID === "TU_CX") {
+        console.warn("Google API Key o Search Engine ID no configurados. Usando fotografía real de respaldo.");
+        return getNonDuplicateBackupPhoto(usedImages);
+      }
+
+      try {
+        const termsToExclude = "-ai -artificial -render -concept -drawing -illustration -art -blender -wallpaper -3d";
+        const query = `${vehicleModel} real car motorsport photo track ${termsToExclude}`;
+        
+        const endpoint = `https://www.googleapis.com/customsearch/v1?key=${encodeURIComponent(GOOGLE_API_KEY)}&cx=${encodeURIComponent(SEARCH_ENGINE_ID)}&q=${encodeURIComponent(query)}&searchType=image&imgType=photo&num=10&safe=active`;
+
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+          throw new Error(`Google API respondió con código: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.items && data.items.length > 0) {
+          for (const item of data.items) {
+            const imgUrl = item.link;
+            const snippet = (item.snippet || '').toLowerCase();
+            const title = (item.title || '').toLowerCase();
+
+            const isAIGenerated = snippet.includes('midjourney') || snippet.includes('dall-e') || 
+                                  snippet.includes('stable diffusion') || snippet.includes('ai generated') ||
+                                  title.includes('ai art') || title.includes('concept car');
+
+            if (imgUrl && !isAIGenerated && !usedImages.has(imgUrl)) {
+              return imgUrl;
+            }
+          }
+
+          return data.items[0].link;
+        }
+
+        return getNonDuplicateBackupPhoto(usedImages);
+      } catch (err) {
+        console.error("Error al consultar Google Custom Search API:", err);
+        return getNonDuplicateBackupPhoto(usedImages);
+      }
+    }
+
+    function getNonDuplicateBackupPhoto(usedImagesSet) {
+      const availablePhotos = BACKUP_REAL_MOTORSPORT_PHOTOS.filter(url => !usedImagesSet.has(url));
+      if (availablePhotos.length > 0) {
+        return availablePhotos[Math.floor(Math.random() * availablePhotos.length)];
+      }
+      return BACKUP_REAL_MOTORSPORT_PHOTOS[Math.floor(Math.random() * BACKUP_REAL_MOTORSPORT_PHOTOS.length)];
+    }
+
+    /* ========== COMPRESIÓN DE IMÁGENES SUBIDAS (CANVAS A BASE64) ========== */
+    function fileToBase64Optimized(file) {
+      return new Promise((resolve) => {
+        if (!file) return resolve(null);
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 800;
+            const scaleSize = MAX_WIDTH / img.width;
+            canvas.width = Math.min(img.width, MAX_WIDTH);
+            canvas.height = img.width > MAX_WIDTH ? img.height * scaleSize : img.height;
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resolve(canvas.toDataURL('image/jpeg', 0.8));
+          };
+        };
+        reader.onerror = () => resolve(null);
+      });
+    }
+
+    function previewSelectedImage(input, targetSpanId) {
+      const span = document.getElementById(targetSpanId);
+      if (input.files && input.files[0]) {
+        span.textContent = `Archivo seleccionado: ${input.files[0].name}`;
+      } else {
+        span.textContent = 'Sin archivo (Se buscará foto real en Google Imágenes)';
+      }
+    }
+
+    /* ========== VALIDACIÓN DE RESTRICCIONES (24h / 72h) ========== */
+    function checkCooldown(isPRIME) {
+      const now = Date.now();
+      const storageKey = isPRIME ? STORAGE_KEYS.LAST_SUBMIT_PRIME : STORAGE_KEYS.LAST_SUBMIT_NORMAL;
+      const cooldownMs = isPRIME ? COOLDOWN_PRIME_MS : COOLDOWN_NORMAL_MS;
+      const lastSubmit = parseInt(localStorage.getItem(storageKey) || '0', 10);
+
+      const elapsed = now - lastSubmit;
+      if (elapsed < cooldownMs) {
+        const remainingMs = cooldownMs - elapsed;
+        const remainingHours = Math.floor(remainingMs / (1000 * 60 * 60));
+        const remainingMinutes = Math.floor((remainingMs % (1000 * 60 * 60)) / (1000 * 60));
+        return {
+          allowed: false,
+          msg: `Restricción de tiempo: Podrás enviar otra combinación en ${remainingHours} horas y ${remainingMinutes} minutos.`
+        };
+      }
+
+      return { allowed: true };
+    }
+
+    /* ========== MANEJO DE ENVÍO DE PROPUESTAS ========== */
+    async function handleChallengeSubmit(e, isPRIME) {
+      e.preventDefault();
+
+      const cooldownCheck = checkCooldown(isPRIME);
+      if (!cooldownCheck.allowed) {
+        alert(cooldownCheck.msg);
+        return;
+      }
+
+      const prefix = isPRIME ? 'prime' : 'normal';
+      const submitBtn = document.getElementById(`${prefix}-submit-btn`);
+      const vehicle = document.getElementById(`${prefix}-vehicle`).value.trim();
+      const track = document.getElementById(`${prefix}-track`).value.trim();
+      const category = document.getElementById(`${prefix}-category`).value;
+      const fileInput = document.getElementById(`${prefix}-image-file`);
+
+      toggleBtnLoading(submitBtn, true);
+
+      let finalImageUrl = null;
+
+      try {
+        if (fileInput && fileInput.files[0]) {
+          finalImageUrl = await fileToBase64Optimized(fileInput.files[0]);
+        }
+
+        if (!finalImageUrl) {
+          finalImageUrl = await fetchRealCarImageFromGoogle(vehicle);
+        }
+
+        const newChallenge = {
+          id: 'chal-' + Date.now(),
+          vehicle,
+          track,
+          category,
+          image: finalImageUrl,
+          votes: 1,
+          isPrime: isPRIME,
+          createdAt: Date.now()
+        };
+
+        const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+        challenges.push(newChallenge);
+        localStorage.setItem(STORAGE_KEYS.CHALLENGES, JSON.stringify(challenges));
+
+        const storageKey = isPRIME ? STORAGE_KEYS.LAST_SUBMIT_PRIME : STORAGE_KEYS.LAST_SUBMIT_NORMAL;
+        localStorage.setItem(storageKey, Date.now().toString());
+
+        const userVotes = JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_VOTES) || '{}');
+        userVotes[newChallenge.id] = 'up';
+        localStorage.setItem(STORAGE_KEYS.USER_VOTES, JSON.stringify(userVotes));
+
+        document.getElementById(`form-${prefix}`).reset();
+        document.getElementById(`${prefix}-img-preview`).textContent = 'Sin archivo (Se buscará foto real en Google Imágenes)';
+
+        alert(`¡Challenge enviado con éxito ${isPRIME ? 'como Assetto PRIME' : ''}!`);
+        switchTab('tab-votacion');
+      } catch (err) {
+        console.error("Error al procesar el envío:", err);
+        alert("Ocurrió un error al procesar la propuesta. Inténtalo nuevamente.");
+      } finally {
+        toggleBtnLoading(submitBtn, false);
+      }
+    }
+
+    function toggleBtnLoading(btn, isLoading) {
+      if (!btn) return;
+      const textSpan = btn.querySelector('.btn-text');
+      const spinnerSpan = btn.querySelector('.btn-spinner');
+      if (isLoading) {
+        btn.disabled = true;
+        textSpan.classList.add('hidden');
+        spinnerSpan.classList.remove('hidden');
+        spinnerSpan.classList.add('flex');
+      } else {
+        btn.disabled = false;
+        textSpan.classList.remove('hidden');
+        spinnerSpan.classList.add('hidden');
+        spinnerSpan.classList.remove('flex');
+      }
+    }
+
+    /* ========== RENDERIZADO Y VOTACIÓN ========== */
+    function renderVotingGrid() {
+      const container = document.getElementById('voting-grid');
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const userVotes = JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_VOTES) || '{}');
+
+      if (challenges.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-gray-500 carbon-gradient rounded-2xl border border-racing-border">
+            <i class="fa-solid fa-flag-checkered text-4xl mb-3 text-racing-red"></i>
+            <p class="text-base font-semibold text-gray-300">Aún no hay combinaciones registradas.</p>
+            <p class="text-xs mt-1">Sé el primero en enviar tu challenge en la pestaña correspondiente.</p>
+          </div>
+        `;
+        return;
+      }
+
+      challenges.sort((a, b) => {
+        if (a.isPrime && !b.isPrime) return -1;
+        if (!a.isPrime && b.isPrime) return 1;
+        return b.votes - a.votes;
+      });
+
+      container.innerHTML = challenges.map(item => {
+        const userCurrentVote = userVotes[item.id] || null;
+        const primeCardClasses = item.isPrime 
+          ? 'border-2 border-prime-gold prime-border-glow shadow-xl shadow-amber-950/20' 
+          : 'border border-racing-border hover:border-racing-red/50';
+
+        return `
+          <div class="carbon-gradient rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between ${primeCardClasses}">
+            <div>
+              <div class="relative h-48 w-full bg-racing-carbon overflow-hidden">
+                <img src="${item.image}" alt="${item.vehicle}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                
+                ${item.isPrime ? `
+                  <div class="absolute top-3 left-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xs font-black px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-crown text-[10px]"></i> PRIME
+                  </div>
+                ` : ''}
+
+                <div class="absolute top-3 right-3 bg-black/75 backdrop-blur-md text-gray-200 text-xs font-bold px-2.5 py-1 rounded-md border border-white/10 uppercase">
+                  ${item.category}
+                </div>
+              </div>
+
+              <div class="p-5">
+                <h3 class="text-lg font-black text-white font-racing tracking-wide uppercase line-clamp-1">${item.vehicle}</h3>
+                <p class="text-sm text-gray-400 flex items-center gap-2 mt-1">
+                  <i class="fa-solid fa-road text-racing-red"></i> <span class="line-clamp-1">${item.track}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 pt-0">
+              <div class="bg-racing-panel rounded-xl p-2.5 border border-racing-border flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Puntuación:</span>
+                  <span class="text-xl font-black ${item.votes >= 0 ? 'text-white' : 'text-red-500'} font-racing">${item.votes}</span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <button onclick="handleVote('${item.id}', 1)" title="Votar a favor"
+                          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all ${userCurrentVote === 'up' ? 'bg-racing-red text-white' : 'bg-racing-card hover:bg-racing-border text-gray-400'}">
+                    <i class="fa-solid fa-arrow-up"></i>
+                  </button>
+                  <button onclick="handleVote('${item.id}', -1)" title="Votar en contra"
+                          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all ${userCurrentVote === 'down' ? 'bg-blue-600 text-white' : 'bg-racing-card hover:bg-racing-border text-gray-400'}">
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleVote(id, delta) {
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const userVotes = JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_VOTES) || '{}');
+      const target = challenges.find(c => c.id === id);
+
+      if (!target) return;
+
+      const currentVote = userVotes[id];
+
+      if (delta === 1) {
+        if (currentVote === 'up') {
+          target.votes -= 1;
+          delete userVotes[id];
+        } else if (currentVote === 'down') {
+          target.votes += 2;
+          userVotes[id] = 'up';
+        } else {
+          target.votes += 1;
+          userVotes[id] = 'up';
+        }
+      } else if (delta === -1) {
+        if (currentVote === 'down') {
+          target.votes += 1;
+          delete userVotes[id];
+        } else if (currentVote === 'up') {
+          target.votes -= 2;
+          userVotes[id] = 'down';
+        } else {
+          target.votes -= 1;
+          userVotes[id] = 'down';
+        }
+      }
+
+      localStorage.setItem(STORAGE_KEYS.CHALLENGES, JSON.stringify(challenges));
+      localStorage.setItem(STORAGE_KEYS.USER_VOTES, JSON.stringify(userVotes));
+      renderVotingGrid();
+    }
+
+    /* ========== NAVEGACIÓN Y SESIONES ========== */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.remove('bg-racing-red', 'text-white', 'shadow-md');
+        btn.classList.add('text-gray-400');
+      });
+
+      const selectedTab = document.getElementById(tabId);
+      if (selectedTab) selectedTab.classList.remove('hidden');
+
+      const btnMap = {
+        'tab-envia': 'btn-envia',
+        'tab-votacion': 'btn-votacion',
+        'tab-prime': 'btn-prime',
+        'tab-admin': 'btn-admin'
+      };
+
+      const activeBtn = document.getElementById(btnMap[tabId]);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-racing-red', 'text-white', 'shadow-md');
+        activeBtn.classList.remove('text-gray-400');
+      }
+
+      if (tabId === 'tab-votacion') {
+        renderVotingGrid();
+      } else if (tabId === 'tab-admin') {
+        renderAdminDashboard();
+      }
+    }
+
+    function checkSavedSessions() {
+      if (localStorage.getItem(STORAGE_KEYS.PRIME_AUTH) === 'true') {
+        document.getElementById('prime-lock-screen').classList.add('hidden');
+        document.getElementById('prime-unlocked-panel').classList.remove('hidden');
+      }
+      if (localStorage.getItem(STORAGE_KEYS.ADMIN_AUTH) === 'true') {
+        document.getElementById('admin-lock-screen').classList.add('hidden');
+        document.getElementById('admin-dashboard').classList.remove('hidden');
+      }
+    }
+
+    function handlePrimeAuth(e) {
+      e.preventDefault();
+      const pass = document.getElementById('prime-password-input').value.trim();
+      if (pass === 'somosprime') {
+        localStorage.setItem(STORAGE_KEYS.PRIME_AUTH, 'true');
+        document.getElementById('prime-lock-screen').classList.add('hidden');
+        document.getElementById('prime-unlocked-panel').classList.remove('hidden');
+      } else {
+        alert('Contraseña PRIME incorrecta.');
+      }
+    }
+
+    function logoutPrime() {
+      localStorage.removeItem(STORAGE_KEYS.PRIME_AUTH);
+      document.getElementById('prime-lock-screen').classList.remove('hidden');
+      document.getElementById('prime-unlocked-panel').classList.add('hidden');
+      document.getElementById('prime-password-input').value = '';
+    }
+
+    function handleAdminAuth(e) {
+      e.preventDefault();
+      const pass = document.getElementById('admin-password-input').value.trim();
+      if (pass === 'chilensis') {
+        localStorage.setItem(STORAGE_KEYS.ADMIN_AUTH, 'true');
+        document.getElementById('admin-lock-screen').classList.add('hidden');
+        document.getElementById('admin-dashboard').classList.remove('hidden');
+        renderAdminDashboard();
+      } else {
+        alert('Contraseña de Administrador incorrecta.');
+      }
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem(STORAGE_KEYS.ADMIN_AUTH);
+      document.getElementById('admin-lock-screen').classList.remove('hidden');
+      document.getElementById('admin-dashboard').classList.add('hidden');
+      document.getElementById('admin-password-input').value = '';
+    }
+
+    /* ========== PANEL DE ADMINISTRACIÓN ========== */
+    function renderAdminDashboard() {
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const suggestions = JSON.parse(localStorage.getItem(STORAGE_KEYS.SUGGESTIONS) || '[]');
+
+      document.getElementById('admin-count-proposals').textContent = challenges.length;
+      document.getElementById('admin-count-suggestions').textContent = suggestions.length;
+
+      const tbody = document.getElementById('admin-proposals-tbody');
+      if (challenges.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-gray-500">No hay propuestas registradas.</td></tr>`;
+      } else {
+        tbody.innerHTML = challenges.map(item => `
+          <tr class="hover:bg-racing-panel/40 transition-colors">
+            <td class="py-3 px-4">
+              ${item.isPrime ? '<span class="bg-amber-500/20 text-prime-gold text-[10px] font-bold px-2 py-0.5 rounded border border-amber-500/30 uppercase">PRIME</span>' : '<span class="text-gray-500 text-xs">Normal</span>'}
+            </td>
+            <td class="py-3 px-4 font-bold text-white">${item.vehicle}</td>
+            <td class="py-3 px-4 text-gray-300">${item.track}</td>
+            <td class="py-3 px-4 text-xs text-gray-400">${item.category}</td>
+            <td class="py-3 px-4 text-center font-racing font-bold text-base ${item.votes >= 0 ? 'text-white' : 'text-red-500'}">${item.votes}</td>
+            <td class="py-3 px-4 text-right space-x-2">
+              <button onclick="openEditModal('${item.id}')" class="text-blue-400 hover:text-blue-300 text-xs font-semibold px-2.5 py-1 bg-blue-950/40 rounded border border-blue-800">
+                <i class="fa-solid fa-pen"></i> Editar
+              </button>
+              <button onclick="promptDeleteChallenge('${item.id}')" class="text-racing-red hover:text-red-400 text-xs font-semibold px-2.5 py-1 bg-red-950/40 rounded border border-red-800">
+                <i class="fa-solid fa-trash"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      const suggContainer = document.getElementById('admin-suggestions-container');
+      if (suggestions.length === 0) {
+        suggContainer.innerHTML = `<p class="text-center py-6 text-gray-500 text-xs">Aún no se han recibido sugerencias de los usuarios.</p>`;
+      } else {
+        suggContainer.innerHTML = suggestions.map((s, index) => `
+          <div class="py-3 flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm text-gray-200">"${s.text}"</p>
+              <span class="text-[10px] text-gray-500 font-mono mt-1 block">${s.date || 'Reciente'}</span>
+            </div>
+            <button onclick="deleteSuggestion(${index})" class="text-gray-600 hover:text-racing-red text-xs">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    /* ========== MODAL ELIMINAR CON TEXTO OBLIGATORIO ========== */
+    function promptDeleteChallenge(id) {
+      pendingDeleteId = id;
+      document.getElementById('modal-delete').classList.remove('hidden');
+    }
+
+    function closeDeleteModal() {
+      pendingDeleteId = null;
+      document.getElementById('modal-delete').classList.add('hidden');
+    }
+
+    document.getElementById('btn-confirm-delete').addEventListener('click', () => {
+      if (!pendingDeleteId) return;
+
+      let challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      challenges = challenges.filter(c => c.id !== pendingDeleteId);
+      localStorage.setItem(STORAGE_KEYS.CHALLENGES, JSON.stringify(challenges));
+
+      const userVotes = JSON.parse(localStorage.getItem(STORAGE_KEYS.USER_VOTES) || '{}');
+      delete userVotes[pendingDeleteId];
+      localStorage.setItem(STORAGE_KEYS.USER_VOTES, JSON.stringify(userVotes));
+
+      closeDeleteModal();
+      renderAdminDashboard();
+      renderVotingGrid();
+    });
+
+    /* ========== MODAL EDITAR ========== */
+    function openEditModal(id) {
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const item = challenges.find(c => c.id === id);
+      if (!item) return;
+
+      document.getElementById('edit-id').value = item.id;
+      document.getElementById('edit-vehicle').value = item.vehicle;
+      document.getElementById('edit-track').value = item.track;
+      document.getElementById('edit-category').value = item.category;
+      document.getElementById('edit-image-file').value = '';
+
+      document.getElementById('modal-edit').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+      document.getElementById('modal-edit').classList.add('hidden');
+    }
+
+    async function handleEditSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-id').value;
+      const challenges = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHALLENGES) || '[]');
+      const index = challenges.findIndex(c => c.id === id);
+
+      if (index === -1) return;
+
+      const previousVehicle = challenges[index].vehicle;
+      const newVehicle = document.getElementById('edit-vehicle').value.trim();
+
+      challenges[index].vehicle = newVehicle;
+      challenges[index].track = document.getElementById('edit-track').value.trim();
+      challenges[index].category = document.getElementById('edit-
